@@ -33,8 +33,8 @@ export function Stats() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-premium relative overflow-hidden border-y border-white/5">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
+    <section className="py-24 bg-background relative overflow-hidden border-y border-border">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.pattern')] opacity-5 mix-blend-overlay dark:opacity-20"></div>
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
@@ -50,7 +50,7 @@ export function Stats() {
               <div className="text-5xl md:text-7xl font-serif text-gold-500 mb-4 font-light text-glow">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-gray-400 font-sans tracking-[0.2em] uppercase text-sm font-medium">
+              <p className="text-foreground/50 font-sans tracking-[0.2em] uppercase text-sm font-medium">
                 {stat.label}
               </p>
             </motion.div>

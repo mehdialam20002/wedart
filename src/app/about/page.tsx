@@ -8,7 +8,7 @@ export default function AboutPage() {
           title="About Us" 
           subtitle="The team behind the lens"
         />
-        <div className="mt-12 text-gray-300 font-sans leading-relaxed space-y-6">
+        <div className="mt-12 text-foreground/70 font-sans leading-relaxed space-y-6">
           <p>
             WedArt Films was born out of a passion for storytelling. We believe that every couple has a unique narrative, and our goal is to translate that narrative into timeless visual art.
           </p>

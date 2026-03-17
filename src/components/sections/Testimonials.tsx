@@ -83,7 +83,7 @@ export function Testimonials() {
               </div>
 
               {/* Review Text */}
-              <p className="text-xl md:text-2xl lg:text-3xl font-serif text-white/90 leading-relaxed mb-8 italic max-w-3xl">
+              <p className="text-xl md:text-2xl lg:text-3xl font-serif text-foreground leading-relaxed mb-8 italic max-w-3xl px-4">
                 "{testimonials[currentIndex].text}"
               </p>
 
@@ -103,7 +103,7 @@ export function Testimonials() {
                 className={`transition-all duration-300 rounded-full ${
                   idx === currentIndex 
                     ? "w-8 h-2 bg-gold-500 shadow-[0_0_10px_rgba(212,175,55,0.6)]" 
-                    : "w-2 h-2 bg-white/20 hover:bg-white/40"
+                    : "w-2 h-2 bg-foreground/10 hover:bg-foreground/20"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />

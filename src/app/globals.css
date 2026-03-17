@@ -4,8 +4,8 @@
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
   
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   
   --color-gold-400: #ffd700;
   --color-gold-500: #d4af37;
@@ -14,14 +14,19 @@
   --color-red-500: #8c1c13;
   --color-red-600: #59100a;
   
-  --color-card: rgba(255, 255, 255, 0.05);
-  --color-card-hover: rgba(255, 255, 255, 0.1);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
 }
 
 @layer base {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --card: rgba(255, 255, 255, 0.05);
+    --card-hover: rgba(255, 255, 255, 0.1);
+    --border: rgba(255, 255, 255, 0.1);
+    --logo-filter: none;
   }
 }
 
@@ -32,9 +37,9 @@ body {
 }
 
 @utility glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
 }
 
 @utility text-glow {
@@ -43,4 +48,17 @@ body {
 
 @utility bg-gradient-premium {
   background: linear-gradient(135deg, rgba(10,10,10,1) 0%, rgba(20,20,20,1) 100%);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }

@@ -41,10 +41,10 @@ export function GalleryClient({ initialData }: { initialData: GalleryImage[] }) 
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-2 rounded-full font-sans text-sm tracking-wide transition-all whitespace-nowrap capitalize ${
+            className={`px-8 py-3 rounded-full font-sans text-sm tracking-[0.1em] transition-all whitespace-nowrap capitalize border ${
               activeCategory === cat
-                ? "bg-gold-500 text-black font-semibold shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                : "bg-white/5 text-gray-400 hover:text-white hover:bg-white/10"
+                ? "bg-gold-500 border-gold-500 text-black font-bold shadow-lg shadow-gold-500/20"
+                : "bg-card border-border text-foreground/50 hover:text-foreground hover:border-gold-500/50"
             }`}
           >
             {cat}

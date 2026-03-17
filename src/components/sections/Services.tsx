@@ -53,9 +53,13 @@ export function Services() {
   };
 
   return (
-    <section className="py-24 bg-[url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2670&auto=format&fit=crop')] bg-fixed bg-cover bg-center relative">
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+    <section className="py-24 relative overflow-hidden">
+      {/* Background Image with Theme-aware Overlay */}
+      <div 
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2670&auto=format&fit=crop')] bg-fixed bg-cover bg-center"
+        style={{ opacity: 0.1 }} // Subtle in light mode, will be darker in dark mode via overlay
+      />
+      <div className="absolute inset-0 bg-background/90 dark:bg-black/80 backdrop-blur-sm" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <SectionHeading 
@@ -77,27 +81,27 @@ export function Services() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className={cn(
                   "col-span-1",
-                  idx === 4 && "md:col-span-2 lg:col-span-1 lg:col-start-2" // Center the 5th item logically
+                  idx === 4 && "md:col-span-2 lg:col-span-1 lg:col-start-2"
                 )}
               >
                 <GlassCard
-                  className="h-full cursor-pointer flex flex-col group"
+                  className="h-full cursor-pointer flex flex-col group border-border hover:border-gold-500/50"
                   onClick={() => toggleExpand(service.id)}
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center group-hover:bg-gold-500/20 transition-colors">
                       <Icon className="w-6 h-6 text-gold-500" />
                     </div>
-                    <h3 className="text-xl font-serif text-white font-medium">
+                    <h3 className="text-xl font-serif text-foreground font-medium">
                       {service.title}
                     </h3>
                   </div>
 
-                  <p className="text-gray-300 font-sans text-sm mb-4 leading-relaxed flex-grow">
+                  <p className="text-foreground/70 font-sans text-sm mb-4 leading-relaxed flex-grow">
                     {service.shortDesc}
                   </p>
 
-                  <div className="flex items-center justify-between text-gold-500 text-sm font-semibold tracking-wide uppercase mt-auto pt-4 border-t border-white/10">
+                  <div className="flex items-center justify-between text-gold-500 text-sm font-semibold tracking-wide uppercase mt-auto pt-4 border-t border-border">
                     <span>{isExpanded ? "Show Less" : "Learn More"}</span>
                     <motion.div
                       animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -116,7 +120,7 @@ export function Services() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-gray-400 font-sans text-sm pt-4 leading-relaxed mt-2 border-t border-white/5">
+                        <p className="text-foreground/60 font-sans text-sm pt-4 leading-relaxed mt-2 border-t border-border">
                           {service.fullDesc}
                         </p>
                       </motion.div>

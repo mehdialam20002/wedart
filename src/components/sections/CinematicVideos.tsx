@@ -43,7 +43,7 @@ export function CinematicVideos({ initialVideos }: { initialVideos?: VideoItem[]
   const displayVideos = initialVideos && initialVideos.length > 0 ? initialVideos : dummyVideos;
 
   return (
-    <section className="py-24 bg-zinc-950 relative">
+    <section className="py-24 bg-background relative border-t border-border">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading 
           title="Cinematic Films" 

@@ -4,6 +4,7 @@ import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { CinematicVideos } from "@/components/sections/CinematicVideos";
 import { Services } from "@/components/sections/Services";
 import { Packages } from "@/components/sections/Packages";
+import { Team } from "@/components/sections/Team";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <CinematicVideos />
       <Services />
       <Packages />
+      <Team />
       <Testimonials />
       <Contact />
       <Footer />

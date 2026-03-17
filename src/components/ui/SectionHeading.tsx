@@ -43,7 +43,7 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-gray-400 font-sans text-sm md:text-base max-w-2xl tracking-wide uppercase"
+          className="text-foreground/60 font-sans text-sm md:text-base max-w-2xl tracking-wide uppercase"
         >
           {subtitle}
         </motion.p>

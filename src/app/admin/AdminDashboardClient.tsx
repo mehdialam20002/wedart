@@ -157,17 +157,17 @@ export function AdminDashboardClient({ initialBookings }: { initialBookings: Boo
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-sans flex overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground font-sans flex overflow-hidden">
       
       {/* Sidebar Layout */}
-      <aside className="w-64 bg-black border-r border-white/5 flex flex-col p-6 hidden md:flex">
+      <aside className="w-64 bg-card border-r border-border flex flex-col p-6 hidden md:flex">
         <h2 className="font-serif text-2xl text-gold-500 mb-12">WedArt Admin</h2>
         
         <nav className="flex flex-col gap-2 flex-grow relative">
           {["customer", "admin"].map((tab) => (
             <button 
               key={tab}
-              className={`relative text-left px-4 py-3 rounded-lg transition-colors capitalize z-10 ${activeTab === tab ? "text-gold-500" : "text-gray-400 hover:text-white"}`}
+              className={`relative text-left px-4 py-3 rounded-lg transition-colors capitalize z-10 ${activeTab === tab ? "text-gold-500" : "text-foreground/50 hover:text-foreground"}`}
               onClick={() => setActiveTab(tab as "customer" | "admin")}
             >
               {activeTab === tab && (

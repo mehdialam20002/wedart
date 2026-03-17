@@ -82,7 +82,7 @@ export function FeaturedWork() {
   };
 
   return (
-    <section className="py-24 bg-zinc-950 relative overflow-hidden border-t border-white/5">
+    <section className="py-24 bg-background relative overflow-hidden border-t border-border">
       <div className="max-w-7xl mx-auto px-4 relative z-10 mb-12">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="max-w-xl">
@@ -95,20 +95,22 @@ export function FeaturedWork() {
         </div>
 
         {/* Category Filter */}
-        <div className="flex gap-4 mt-8 overflow-x-auto pb-4 no-scrollbar">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] transition-all whitespace-nowrap border ${
-                activeCategory === cat
-                  ? "bg-gold-500 border-gold-500 text-black font-bold"
-                  : "bg-transparent border-white/10 text-gray-400 hover:text-white hover:border-gold-500/50"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="relative">
+          <div className="flex gap-3 mt-8 overflow-x-auto pb-4 no-scrollbar mask-fade-x -mx-4 px-4 scroll-smooth">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] transition-all whitespace-nowrap border ${
+                  activeCategory === cat
+                    ? "bg-gold-500 border-gold-500 text-black font-bold shadow-lg shadow-gold-500/20"
+                    : "bg-card/50 border-border text-foreground/50 hover:text-foreground hover:border-gold-500/50"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -141,11 +143,6 @@ export function FeaturedWork() {
             scrollbarWidth: 'none'
           }}
         >
-          <style jsx>{`
-            .no-scrollbar::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
           <AnimatePresence mode="popLayout">
             {filteredImages.map((img, idx) => (
               <motion.div

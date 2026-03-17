@@ -17,46 +17,48 @@ export function Hero() {
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <video
+        <motion.video
           autoPlay
           muted
           loop
           playsInline
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "easeOut" }}
           className="object-cover w-full h-full"
         >
-          {/* Dummy high-quality aesthetic video link */}
           <source
             src="https://cdn.pixabay.com/video/2021/08/10/84518-586794622_large.mp4"
             type="video/mp4"
           />
-        </video>
+        </motion.video>
         {/* Cinematic Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-background/60 to-background" />
-        {/* Warm color light leak overlay */}
-        <div className="absolute inset-0 bg-gold-500/10 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-background/10 to-background" />
+        {/* Dynamic Light Overlay */}
+        <div className="absolute inset-0 bg-gold-500/5 mix-blend-soft-light dark:bg-gold-500/10" />
       </div>
 
-      {/* Floating Particles Animation */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
-        {mounted && [...Array(20)].map((_, i) => (
+      {/* Floating Particles/Bubbles */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {mounted && [...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute bg-gold-400 rounded-full blur-[1px]"
+            className="absolute bg-gold-500/20 rounded-full blur-xl"
             style={{
-              width: Math.random() * 4 + 1 + "px",
-              height: Math.random() * 4 + 1 + "px",
+              width: Math.random() * 300 + 100 + "px",
+              height: Math.random() * 300 + 100 + "px",
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
             }}
             animate={{
-              y: [0, -100],
-              opacity: [0, 0.8, 0],
+              x: [0, Math.random() * 50 - 25],
+              y: [0, Math.random() * 50 - 25],
+              opacity: [0.1, 0.3, 0.1],
             }}
             transition={{
-              duration: Math.random() * 5 + 5,
+              duration: Math.random() * 10 + 10,
               repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 5,
+              ease: "easeInOut",
             }}
           />
         ))}
@@ -68,19 +70,27 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-gold-500 font-sans tracking-[0.2em] text-sm md:text-base mb-6 uppercase"
+          className="text-gold-500 font-sans tracking-[0.4em] text-xs md:text-sm mb-6 uppercase font-bold"
         >
-          Cinematic Wedding Photography & Films
+          <span className="relative inline-block">
+            Cinematic Wedding Photography & Films
+            <motion.span 
+              className="absolute -bottom-2 left-0 w-full h-[1px] bg-gold-500/50"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+            />
+          </span>
         </motion.p>
         
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium leading-tight mb-8"
+          className="font-serif text-5xl md:text-7xl lg:text-9xl text-foreground font-medium leading-[1.1] mb-8 drop-shadow-2xl"
         >
           We Capture Your <br />
-          <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">
+          <span className="italic relative text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600">
             Emotions
           </span>
         </motion.h1>
@@ -89,15 +99,15 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 items-center"
+          className="flex flex-col sm:flex-row gap-6 items-center"
         >
           <Link href="/contact" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full text-lg px-8">
+            <Button size="lg" className="w-full text-lg px-10 rounded-full shadow-lg shadow-gold-500/20">
               Book Your Date
             </Button>
           </Link>
           <Link href="/gallery" className="w-full sm:w-auto">
-            <Button size="lg" variant="glass" className="w-full text-lg px-8">
+            <Button size="lg" variant="glass" className="w-full text-lg px-10 rounded-full border-border">
               View Portfolio
             </Button>
           </Link>
@@ -111,7 +121,7 @@ export function Hero() {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center"
       >
-        <span className="text-white/60 text-xs tracking-widest uppercase mb-2">Scroll</span>
+        <span className="text-foreground/40 text-xs tracking-widest uppercase mb-2">Scroll</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}

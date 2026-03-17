@@ -62,7 +62,7 @@ const packages = [
 
 export function Packages() {
   return (
-    <section className="py-24 bg-zinc-950 relative overflow-hidden">
+    <section className="py-24 bg-background relative overflow-hidden">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-500/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
@@ -94,24 +94,24 @@ export function Packages() {
               <GlassCard 
                 className={`w-full flex flex-col p-8 md:p-10 transition-all duration-300 ${
                   pkg.highlight 
-                    ? "border-gold-500/50 shadow-[0_0_30px_rgba(212,175,55,0.15)] bg-white/5 md:-scale-y-105 transform origin-center z-10" 
-                    : "border-white/10"
+                    ? "border-gold-500/50 shadow-[0_0_30px_rgba(212,175,55,0.15)] bg-card md:scale-105 transform origin-center z-10" 
+                    : "border-border"
                 }`}
               >
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-serif text-white mb-2">{pkg.name}</h3>
-                  <p className="text-gray-400 font-sans text-sm mb-6 min-h-[40px]">
+                  <h3 className="text-2xl font-serif text-foreground mb-2">{pkg.name}</h3>
+                  <p className="text-foreground/70 font-sans text-sm mb-6 min-h-[40px]">
                     {pkg.description}
                   </p>
-                  <div className="text-4xl lg:text-5xl font-sans font-semibold text-white tracking-tight flex items-baseline justify-center">
+                  <div className="text-4xl lg:text-5xl font-sans font-semibold text-foreground tracking-tight flex items-baseline justify-center">
                     {pkg.price}
-                    <span className="text-gray-500 text-lg font-normal ml-2 tracking-normal">
+                    <span className="text-foreground/50 text-lg font-normal ml-2 tracking-normal">
                       / day
                     </span>
                   </div>
                 </div>
 
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8" />
 
                 <ul className="flex-grow space-y-5 mb-10">
                   {pkg.features.map((feature, fIdx) => (
@@ -119,7 +119,7 @@ export function Packages() {
                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-gold-500/20 flex items-center justify-center">
                         <Check className="w-3 h-3 text-gold-500" />
                       </div>
-                      <span className="text-gray-300 font-sans text-sm leading-relaxed">
+                      <span className="text-foreground/90 font-sans text-sm leading-relaxed">
                         {feature}
                       </span>
                     </li>
@@ -133,7 +133,7 @@ export function Packages() {
                 >
                   Book Now
                 </Button>
-                <p className="text-center text-xs text-gray-500 mt-4 font-sans flex items-center justify-center gap-1">
+                <p className="text-center text-xs text-foreground/40 mt-4 font-sans flex items-center justify-center gap-1">
                   <Info className="w-3 h-3" />
                   Customizable based on requirements
                 </p>

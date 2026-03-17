@@ -68,7 +68,7 @@ export function Contact() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-zinc-950 relative overflow-hidden">
+    <section className="py-24 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col lg:flex-row gap-16 items-center">
         
         {/* Left Side Content */}
@@ -79,18 +79,18 @@ export function Contact() {
             align="left"
             className="mb-8"
           />
-          <p className="text-gray-400 font-sans leading-relaxed mb-8 max-w-lg">
+          <p className="text-foreground/60 font-sans leading-relaxed mb-8 max-w-lg">
             Every love story is beautiful, but yours should be unique. Fill out the form, 
             and let's discuss how we can turn your wedding moments into a timeless masterpiece.
           </p>
           
-          <div className="flex flex-col gap-4 text-white font-sans">
+          <div className="flex flex-col gap-4 text-foreground font-sans">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center">
                 <MessageCircle className="w-5 h-5 text-gold-500" />
               </div>
               <div>
-                <p>+91 7549904732 <span className="text-gray-500 text-sm ml-2">(WhatsApp Available)</span></p>
+                <p>+91 7549904732 <span className="text-foreground/40 text-sm ml-2">(WhatsApp Available)</span></p>
                 <p>+91 8448555792</p>
               </div>
             </div>
@@ -111,10 +111,10 @@ export function Contact() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
           >
-            <GlassCard className="p-8 md:p-10 border-gold-500/20 shadow-[0_0_30px_rgba(212,175,55,0.05)]" hoverEffect={false}>
+            <GlassCard className="p-8 md:p-10 border-gold-500/20 shadow-xl" hoverEffect={false}>
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div>
-                  <label className="block text-sm font-sans text-gray-400 mb-2 uppercase tracking-wide">
+                  <label className="block text-sm font-sans text-foreground/50 mb-2 uppercase tracking-wide">
                     Your Name
                   </label>
                   <input
@@ -123,14 +123,14 @@ export function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-gold-500/50 transition-colors"
+                    className="w-full bg-background/50 border border-border rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-gold-500/50 transition-colors"
                     placeholder="Rahul & Priya"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-sans text-gray-400 mb-2 uppercase tracking-wide">
+                    <label className="block text-sm font-sans text-foreground/50 mb-2 uppercase tracking-wide">
                       Phone Number
                     </label>
                     <input
@@ -139,12 +139,12 @@ export function Contact() {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-gold-500/50 transition-colors"
+                      className="w-full bg-background/50 border border-border rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-gold-500/50 transition-colors"
                       placeholder="+91 00000 00000"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-sans text-gray-400 mb-2 uppercase tracking-wide">
+                    <label className="block text-sm font-sans text-foreground/50 mb-2 uppercase tracking-wide">
                       Wedding Date
                     </label>
                     <input
@@ -153,13 +153,13 @@ export function Contact() {
                       required
                       value={formData.date}
                       onChange={handleChange}
-                      className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-3 text-gray-400 focus:outline-none focus:border-gold-500/50 transition-colors [color-scheme:dark]"
+                      className="w-full bg-background/50 border border-border rounded-md px-4 py-3 text-foreground/70 focus:outline-none focus:border-gold-500/50 transition-colors [color-scheme:light] dark:[color-scheme:dark]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-sans text-gray-400 mb-3 uppercase tracking-wide">
+                  <label className="block text-sm font-sans text-foreground/50 mb-3 uppercase tracking-wide">
                     Select Services Required
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -168,13 +168,13 @@ export function Contact() {
                         key={service} 
                         className={`flex items-center gap-3 p-3 rounded-md border cursor-pointer transition-colors ${
                           formData.package.includes(service) 
-                            ? "bg-gold-500/10 border-gold-500/50 text-white" 
-                            : "bg-black/40 border-white/10 text-gray-400 hover:border-white/20"
+                            ? "bg-gold-500/10 border-gold-500/50 text-foreground" 
+                            : "bg-background/30 border-border text-foreground/60 hover:border-gold-500/30"
                         }`}
                       >
                         <input
                           type="checkbox"
-                          className="w-4 h-4 rounded border-white/20 bg-black/50 text-gold-500 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-gold-500"
+                          className="w-4 h-4 rounded border-border bg-background text-gold-500 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-gold-500"
                           checked={formData.package.includes(service)}
                           onChange={() => handleCheckboxChange(service)}
                         />
@@ -185,7 +185,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-sans text-gray-400 mb-2 uppercase tracking-wide">
+                  <label className="block text-sm font-sans text-foreground/50 mb-2 uppercase tracking-wide">
                     Event Details & Venue
                   </label>
                   <textarea
@@ -193,7 +193,7 @@ export function Contact() {
                     rows={3}
                     value={formData.details}
                     onChange={handleChange}
-                    className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-gold-500/50 transition-colors resize-none"
+                    className="w-full bg-background/50 border border-border rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-gold-500/50 transition-colors resize-none"
                     placeholder="Tell us about your wedding..."
                   />
                 </div>

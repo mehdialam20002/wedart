@@ -4,6 +4,8 @@ import { Toaster } from "sonner";
 import { Navbar } from "@/components/ui/Navbar";
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -25,13 +27,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth dark">
       <body
         className={`${inter.variable} ${playfair.variable} antialiased bg-background text-foreground`}
       >
-        <Navbar />
-        {children}
-        <Toaster theme="dark" position="bottom-right" richColors />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+          <Toaster position="bottom-right" richColors />
+        </ThemeProvider>
       </body>
     </html>
   );
