@@ -39,7 +39,7 @@ export function Navbar() {
   }, [pathname]);
 
   // Don't show navbar in admin routes to keep it separated
-  if (pathname.startsWith("/admin")) return null;
+  if (pathname.startsWith("/admiiin")) return null;
 
   return (
     <>

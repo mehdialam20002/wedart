@@ -15,7 +15,7 @@ export default function AdminLogin() {
     if (email === "admin@wedart.com" && password === "123456") {
       // Very basic static auth
       localStorage.setItem("wedart_admin", "true");
-      router.push("/admin");
+      router.push("/admiiin");
     } else {
       setError("Invalid credentials");
     }

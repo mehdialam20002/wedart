@@ -168,7 +168,7 @@ export function AdminDashboardClient({ initialBookings }: { initialBookings: Boo
 
         <button className="flex items-center gap-2 text-gray-500 hover:text-red-400 mt-auto transition-colors" onClick={() => {
           localStorage.removeItem('wedart_admin');
-          window.location.href='/admin/login';
+          window.location.href='/admiiin/login';
         }}>
           <LogOut className="w-4 h-4" />
           Logout
