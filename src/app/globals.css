@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  
+  --color-gold-400: #ffd700;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #aa8c2c;
+  
+  --color-red-500: #8c1c13;
+  --color-red-600: #59100a;
+  
+  --color-card: rgba(255, 255, 255, 0.05);
+  --color-card-hover: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+@utility bg-gradient-premium {
+  background: linear-gradient(135deg, rgba(10,10,10,1) 0%, rgba(20,20,20,1) 100%);
+}
