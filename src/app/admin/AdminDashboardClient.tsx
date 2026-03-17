@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { Plus, Search, Trash2, Edit2, LogOut, Loader2, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { updateBookingStatus, deleteBooking, createBooking, BookingData, BookingStatus, updateBookingDetails } from "@/app/actions";
+import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -17,6 +19,7 @@ const servicesList = [
 ];
 
 export function AdminDashboardClient({ initialBookings }: { initialBookings: BookingData[] }) {
+  const supabase = createClient();
   const [bookings, setBookings] = React.useState<BookingData[]>(initialBookings);
   const [activeTab, setActiveTab] = React.useState<"customer" | "admin">("customer");
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -140,6 +143,19 @@ export function AdminDashboardClient({ initialBookings }: { initialBookings: Boo
   const pendingInView = bookings.filter(b => b.source === activeTab && b.status === "pending").length;
   const completedInView = bookings.filter(b => b.source === activeTab && b.status === "completed").length;
 
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Logged out successfully");
+      router.push("/admin/login");
+      router.refresh();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white font-sans flex overflow-hidden">
       
@@ -166,10 +182,10 @@ export function AdminDashboardClient({ initialBookings }: { initialBookings: Boo
           ))}
         </nav>
 
-        <button className="flex items-center gap-2 text-gray-500 hover:text-red-400 mt-auto transition-colors" onClick={() => {
-          localStorage.removeItem('wedart_admin');
-          window.location.href='/admin/login';
-        }}>
+        <button 
+          className="flex items-center gap-2 text-gray-500 hover:text-red-400 mt-auto transition-colors" 
+          onClick={handleLogout}
+        >
           <LogOut className="w-4 h-4" />
           Logout
         </button>

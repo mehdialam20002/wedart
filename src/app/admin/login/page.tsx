@@ -3,21 +3,37 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 
 export default function AdminLogin() {
+  const supabase = createClient();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [error, setError] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === "admin@wedart.com" && password === "123456") {
-      // Very basic static auth
-      localStorage.setItem("wedart_admin", "true");
-      router.push("/admin");
-    } else {
-      setError("Invalid credentials");
+    setIsLoading(true);
+    
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast.error(error.message);
+      } else {
+        toast.success("Login successful!");
+        router.push("/admin");
+        router.refresh(); // Refresh to update middleware state
+      }
+    } catch (err: any) {
+      toast.error("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -25,8 +41,6 @@ export default function AdminLogin() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-zinc-950 px-4">
       <div className="w-full max-w-md bg-black/50 border border-white/10 rounded-2xl p-8 backdrop-blur-md">
         <h1 className="text-2xl font-serif text-white text-center mb-8">Admin Portal</h1>
-        
-        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
         
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
@@ -39,6 +53,7 @@ export default function AdminLogin() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-gold-500"
+              placeholder="admin@example.com"
             />
           </div>
           <div>
@@ -51,10 +66,11 @@ export default function AdminLogin() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-gold-500"
+              placeholder="••••••••"
             />
           </div>
-          <Button type="submit" className="w-full">
-            Sign In
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? "Signing In..." : "Sign In"}
           </Button>
         </form>
       </div>
