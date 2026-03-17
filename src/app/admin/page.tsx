@@ -1,4 +1,4 @@
-import { AdminDashboardClient } from "./admiiinDashboardClient";
+import { AdminDashboardClient } from "./adminDashboardClient";
 import { getBookings } from "@/app/actions";
 
 export const dynamic = 'force-dynamic';

@@ -31,7 +31,7 @@ export async function createBooking(data: BookingData) {
 
     if (error) throw new Error(error.message);
 
-    revalidatePath("/admiiin");
+    revalidatePath("/admin");
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };
@@ -62,7 +62,7 @@ export async function updateBookingStatus(id: string, status: BookingStatus) {
 
     if (error) throw new Error(error.message);
 
-    revalidatePath("/admiiin");
+    revalidatePath("/admin");
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };
@@ -78,7 +78,7 @@ export async function updateBookingDetails(id: string, details: Partial<BookingD
 
     if (error) throw new Error(error.message);
 
-    revalidatePath("/admiiin");
+    revalidatePath("/admin");
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };
@@ -94,7 +94,7 @@ export async function deleteBooking(id: string) {
 
     if (error) throw new Error(error.message);
 
-    revalidatePath("/admiiin");
+    revalidatePath("/admin");
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };
